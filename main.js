@@ -8,6 +8,7 @@ AFRAME.registerComponent("spawn-model", {
     const model2El = document.querySelector("#model2");
 
     marker.addEventListener("markerFound", function() {
+      alert("Hello! I am an alert box!!");
       if (this.id === "model-marker") {
         sceneEl.appendChild(modelEl.cloneNode(true));
       } else if (this.id === "model2-marker") {
