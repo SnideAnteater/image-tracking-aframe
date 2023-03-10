@@ -9,9 +9,9 @@ AFRAME.registerComponent("spawn-model", {
 
     marker.addEventListener("markerFound", function() {
       alert("Hello! I am an alert box!!");
-      if (this.id === "model-marker") {
+      if (this.id === "model") {
         sceneEl.appendChild(modelEl.cloneNode(true));
-      } else if (this.id === "model2-marker") {
+      } else if (this.id === "model2") {
         sceneEl.appendChild(model2El.cloneNode(true));
       }
     });
@@ -25,8 +25,8 @@ AFRAME.registerComponent("spawn-model", {
   }
 });
 
-const marker1 = document.querySelector("#model-marker");
-const marker2 = document.querySelector("#model2-marker");
+const marker1 = document.querySelector("#model");
+const marker2 = document.querySelector("#model2");
 
 marker1.setAttribute("spawn-model", "");
 marker2.setAttribute("spawn-model", "");
