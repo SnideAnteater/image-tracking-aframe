@@ -47,7 +47,11 @@
       <a-assets>
         <a-asset-item 
           id="bottleIcon"
-          src="./markers/SA_Button_Bottle.glb">
+          src="https://experiment.cravefx.com/akmal/imagetrack/markers/helmet.glb">
+        </a-asset-item>
+        <a-asset-item 
+          id="hat"
+          src="https://experiment.cravefx.com/akmal/imagetrack/markers/hat.glb">
         </a-asset-item>
       </a-assets>
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
@@ -55,16 +59,34 @@
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
       <a-nft
         type="nft"
-        url="./fox/fox"
+        url="https://experiment.cravefx.com/akmal/imagetrack/fox-image/pinball"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".1"
+        smoothThreshold="5">
+          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+          <a-entity
+              gltf-model="#bottleIcon"
+              scale="50 50 50"
+              position="50 100 -100"
+              rotation="270 0 0"
+          >
+          </a-entity>
+      </a-nft>
+
+      <a-nft
+        type="nft"
+        url="https://experiment.cravefx.com/akmal/imagetrack/fox-image/crave"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
         smoothThreshold="5">
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
           <a-entity
-          gltf-model="#bottleIcon"
-              scale="5 5 5"
-              position="100 100 0"
+              gltf-model="#hat"
+              scale="25 25 25"
+              position="50 100 -100"
+              rotation="270 0 0"
           >
           </a-entity>
       </a-nft>
