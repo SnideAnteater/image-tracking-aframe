@@ -2,18 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Image based tracking AR.js demo</title>
-    <script src="./src/script.js" async></script>
     <!-- import aframe and then ar.js with image tracking / location based features -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Detect.js/2.2.2/detect.min.js"
-      integrity="sha512-iNuMM5cmiXDvk4VCTp6UEbDwYy/dA3CFTTYKB6/V+LD62S58TQZ+sykXzhmVT1QvqHD39ZhecsPGXjZUaIuSWQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
 
     <!-- style for the loader -->
     <style>
@@ -43,5 +36,66 @@
     <div class="arjs-loader">
       <div>Loading, please wait...</div>
     </div>
+
+    <!-- a-frame scene -->
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="bottleIcon"
+          src="https://experiment.cravefx.com/akmal/imagetrack/markers/helmet.glb"
+        >
+        </a-asset-item>
+        <a-asset-item
+          id="hat"
+          src="https://experiment.cravefx.com/akmal/imagetrack/markers/hat.glb"
+        >
+        </a-asset-item>
+      </a-assets>
+      <!-- a-nft is the anchor that defines an Image Tracking entity -->
+      <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <a-nft
+        type="nft"
+        url="https://experiment.cravefx.com/akmal/imagetrack/fox-image/pinball"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".1"
+        smoothThreshold="5"
+      >
+        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+        <a-entity
+          gltf-model="#bottleIcon"
+          scale="50 50 50"
+          position="50 100 -100"
+          rotation="270 0 0"
+        >
+        </a-entity>
+      </a-nft>
+
+      <a-nft
+        type="nft"
+        url="https://experiment.cravefx.com/akmal/imagetrack/fox-image/crave"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+        <a-entity
+          gltf-model="#hat"
+          scale="25 25 25"
+          position="50 100 -100"
+          rotation="270 0 0"
+        >
+        </a-entity>
+      </a-nft>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity camera></a-entity>
+    </a-scene>
   </body>
 </html>
